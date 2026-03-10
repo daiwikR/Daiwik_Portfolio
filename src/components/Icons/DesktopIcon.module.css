@@ -1,0 +1,41 @@
+.icon {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  cursor: default;
+  width: 72px;
+  z-index: 10;
+}
+
+.icon:focus {
+  outline: none;
+}
+
+.canvas {
+  width: 32px;
+  height: 32px;
+  image-rendering: pixelated;
+}
+
+.label {
+  font-family: var(--font-ui);
+  font-size: 7px;
+  color: var(--win-white);
+  text-align: center;
+  text-shadow: 1px 1px 0 var(--win-black);
+  word-break: break-word;
+  max-width: 72px;
+  line-height: 1.4;
+}
+
+.selected .canvas {
+  outline: 1px dotted var(--win-white);
+}
+
+.selected .label {
+  background: var(--win-blue);
+  color: var(--win-white);
+}

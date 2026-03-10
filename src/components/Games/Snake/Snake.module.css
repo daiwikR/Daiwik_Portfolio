@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  background: #111;
+  padding: 8px;
+  gap: 8px;
+}
+
+.hud {
+  display: flex;
+  gap: 20px;
+  font-family: var(--font-ui);
+  font-size: 8px;
+  color: #00FF41;
+  text-shadow: 0 0 4px #00FF41;
+}
+
+.gameArea {
+  position: relative;
+  border: 2px solid #00FF41;
+  box-shadow: 0 0 10px rgba(0,255,65,0.3);
+}

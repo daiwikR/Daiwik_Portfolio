@@ -1,0 +1,202 @@
+.paint {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: #C0C0C0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  overflow: hidden;
+}
+
+.menuBar {
+  display: flex;
+  gap: 0;
+  background: #C0C0C0;
+  border-bottom: 1px solid #808080;
+  padding: 2px 4px;
+  flex-shrink: 0;
+}
+
+.menuItem {
+  padding: 2px 8px;
+  cursor: pointer;
+  color: #000;
+}
+.menuItem:hover {
+  background: #000080;
+  color: #fff;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.toolbox {
+  width: 44px;
+  background: #C0C0C0;
+  border-right: 2px solid #808080;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px 2px;
+  gap: 2px;
+  flex-shrink: 0;
+  overflow-y: auto;
+}
+
+.toolBtn {
+  width: 36px;
+  height: 28px;
+  background: #C0C0C0;
+  border: 2px solid;
+  border-color: #FFFFFF #808080 #808080 #FFFFFF;
+  cursor: pointer;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.toolBtn:hover {
+  background: #D4D0C8;
+}
+
+.toolActive {
+  border-color: #808080 #FFFFFF #FFFFFF #808080 !important;
+  background: #B0B0B0 !important;
+}
+
+.sizeBtn {
+  width: 36px;
+  height: 24px;
+  background: #C0C0C0;
+  border: 1px solid #808080;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.sizePreview {
+  border-radius: 50%;
+  min-width: 2px;
+  min-height: 2px;
+}
+
+.toolDivider {
+  width: 32px;
+  height: 1px;
+  background: #808080;
+  margin: 3px 0;
+}
+
+.colorBoxes {
+  position: relative;
+  width: 36px;
+  height: 28px;
+  margin-top: 2px;
+}
+
+.colorFg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  border: 2px solid;
+  border-color: #FFFFFF #808080 #808080 #FFFFFF;
+  cursor: pointer;
+}
+
+.colorBg {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 22px;
+  height: 22px;
+  border: 2px solid;
+  border-color: #FFFFFF #808080 #808080 #FFFFFF;
+  cursor: pointer;
+}
+
+.canvasWrap {
+  flex: 1;
+  overflow: auto;
+  background: #808080;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 4px;
+}
+
+.mainCanvas {
+  display: block;
+  cursor: crosshair;
+  border: 2px solid;
+  border-color: #808080 #FFFFFF #FFFFFF #808080;
+  background: #FFFFFF;
+}
+
+.overlayCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.textInputOverlay {
+  position: absolute;
+  background: transparent;
+  border: 1px dashed #000;
+  outline: none;
+  font-family: sans-serif;
+  min-width: 60px;
+  z-index: 10;
+}
+
+.palette {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 3px 6px;
+  gap: 1px;
+  background: #C0C0C0;
+  border-top: 2px solid #FFFFFF;
+  border-bottom: 1px solid #808080;
+  flex-shrink: 0;
+}
+
+.swatch {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #808080;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.swatch:hover {
+  border-color: #000;
+  transform: scale(1.15);
+}
+
+.statusBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 6px;
+  background: #C0C0C0;
+  border-top: 1px solid #FFFFFF;
+  color: #000;
+  font-size: 7px;
+  flex-shrink: 0;
+}
+
+.statusSep {
+  width: 1px;
+  height: 14px;
+  background: #808080;
+}

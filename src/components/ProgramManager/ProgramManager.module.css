@@ -1,0 +1,179 @@
+.pm {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--win-grey);
+}
+
+.menuBar {
+  display: flex;
+  background: var(--win-grey);
+  border-bottom: 1px solid var(--bevel-shadow);
+  padding: 2px 0;
+  position: relative;
+}
+
+.menuItem {
+  background: transparent;
+  border: none;
+  font-family: var(--font-ui);
+  font-size: 8px;
+  padding: 2px 8px;
+  cursor: pointer;
+}
+
+.menuItem:hover {
+  background: var(--win-blue);
+  color: var(--win-white);
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 100px;
+  background: var(--win-grey);
+  border-top: 2px solid var(--bevel-light);
+  border-left: 2px solid var(--bevel-light);
+  border-right: 2px solid var(--bevel-shadow);
+  border-bottom: 2px solid var(--bevel-shadow);
+  z-index: 1000;
+  min-width: 150px;
+}
+
+.dropdownItem {
+  font-family: var(--font-ui);
+  font-size: 8px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.dropdownItem:hover {
+  background: var(--win-blue);
+  color: var(--win-white);
+}
+
+.dropdownDivider {
+  height: 1px;
+  background: var(--bevel-shadow);
+  margin: 2px 0;
+}
+
+.body {
+  flex: 1;
+  padding: 6px;
+  overflow: hidden;
+  display: flex;
+}
+
+.groupWindow {
+  flex: 1;
+  background: var(--win-white);
+  border-top: 2px solid var(--bevel-shadow);
+  border-left: 2px solid var(--bevel-shadow);
+  border-right: 2px solid var(--bevel-light);
+  border-bottom: 2px solid var(--bevel-light);
+  display: flex;
+  flex-direction: column;
+}
+
+.groupTitleBar {
+  background: var(--win-grey);
+  border-bottom: 1px solid var(--bevel-shadow);
+  font-family: var(--font-ui);
+  font-size: 8px;
+  padding: 3px 6px;
+  display: flex;
+  align-items: center;
+}
+
+.iconGrid {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px;
+  overflow-y: auto;
+  align-content: flex-start;
+}
+
+.emptyGroup {
+  font-family: var(--font-ui);
+  font-size: 8px;
+  color: var(--bevel-shadow);
+  padding: 20px;
+}
+
+.programIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  cursor: default;
+  width: 64px;
+}
+
+.programIcon:focus {
+  outline: 1px dotted var(--win-black);
+}
+
+.programIcon:hover {
+  background: var(--win-blue);
+}
+
+.programIcon:hover .programIconLabel {
+  color: var(--win-white);
+}
+
+.programIconCanvas {
+  width: 32px;
+  height: 32px;
+  image-rendering: pixelated;
+}
+
+.programIconLabel {
+  font-family: var(--font-ui);
+  font-size: 7px;
+  color: var(--win-black);
+  text-align: center;
+  word-break: break-word;
+  max-width: 64px;
+  line-height: 1.4;
+}
+
+.groupBar {
+  display: flex;
+  gap: 6px;
+  padding: 4px 6px;
+  background: var(--win-grey);
+  border-top: 1px solid var(--bevel-shadow);
+  overflow-x: auto;
+}
+
+.groupBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: var(--win-grey);
+  border-top: 2px solid var(--bevel-light);
+  border-left: 2px solid var(--bevel-light);
+  border-right: 2px solid var(--bevel-shadow);
+  border-bottom: 2px solid var(--bevel-shadow);
+  font-family: var(--font-ui);
+  font-size: 6px;
+  padding: 4px 6px;
+  cursor: pointer;
+  min-width: 60px;
+}
+
+.groupBtn.groupActive {
+  border-top: 2px solid var(--bevel-shadow);
+  border-left: 2px solid var(--bevel-shadow);
+  border-right: 2px solid var(--bevel-light);
+  border-bottom: 2px solid var(--bevel-light);
+}
+
+.groupBtnIcon {
+  font-size: 12px;
+}

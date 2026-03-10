@@ -1,0 +1,62 @@
+.boot {
+  position: fixed;
+  inset: 0;
+  background: #000000;
+  z-index: 999999;
+  display: flex;
+  align-items: flex-start;
+  padding: 20px;
+  transition: opacity 0.5s ease;
+}
+
+.boot.flash {
+  background: #FFFFFF;
+}
+
+.boot.fade {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 65, 0.03) 2px,
+    rgba(0, 255, 65, 0.03) 4px
+  );
+  pointer-events: none;
+}
+
+.terminal {
+  font-family: var(--font-terminal);
+  font-size: 18px;
+  color: var(--matrix-green);
+  text-shadow: 0 0 6px #00FF41;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+}
+
+.line {
+  white-space: pre;
+}
+
+.cursor {
+  display: inline-block;
+  color: var(--matrix-green);
+  animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor_block {
+  display: inline;
+}

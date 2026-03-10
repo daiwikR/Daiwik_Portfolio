@@ -1,0 +1,100 @@
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: var(--win-grey);
+  border-top: 2px solid var(--bevel-light);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 4px;
+  z-index: 9999;
+}
+
+.startBtn {
+  background: var(--win-grey);
+  border-top: 2px solid var(--bevel-light);
+  border-left: 2px solid var(--bevel-light);
+  border-right: 2px solid var(--bevel-shadow);
+  border-bottom: 2px solid var(--bevel-shadow);
+  font-family: var(--font-ui);
+  font-size: 8px;
+  padding: 2px 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 22px;
+  font-weight: bold;
+}
+
+.startBtn:active {
+  border-top: 2px solid var(--bevel-shadow);
+  border-left: 2px solid var(--bevel-shadow);
+  border-right: 2px solid var(--bevel-light);
+  border-bottom: 2px solid var(--bevel-light);
+}
+
+.windowList {
+  flex: 1;
+  display: flex;
+  gap: 3px;
+  overflow: hidden;
+}
+
+.windowBtn {
+  background: var(--win-grey);
+  border-top: 2px solid var(--bevel-light);
+  border-left: 2px solid var(--bevel-light);
+  border-right: 2px solid var(--bevel-shadow);
+  border-bottom: 2px solid var(--bevel-shadow);
+  font-family: var(--font-ui);
+  font-size: 7px;
+  padding: 2px 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+  height: 22px;
+}
+
+.windowBtn.active {
+  border-top: 2px solid var(--bevel-shadow);
+  border-left: 2px solid var(--bevel-shadow);
+  border-right: 2px solid var(--bevel-light);
+  border-bottom: 2px solid var(--bevel-light);
+  background: var(--win-grey);
+}
+
+.clock {
+  background: var(--win-grey);
+  border-top: 2px solid var(--bevel-shadow);
+  border-left: 2px solid var(--bevel-shadow);
+  border-right: 2px solid var(--bevel-light);
+  border-bottom: 2px solid var(--bevel-light);
+  font-family: var(--font-ui);
+  font-size: 8px;
+  padding: 2px 8px;
+  white-space: nowrap;
+  cursor: pointer;
+  height: 22px;
+  display: flex;
+  align-items: center;
+}
+
+.clock.glitch {
+  color: #FF0000;
+  animation: glitchAnim 0.1s infinite;
+}
+
+@keyframes glitchAnim {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-2px); color: #FF0000; }
+  50% { transform: translateX(2px); color: #00FF00; }
+  75% { transform: translateX(-1px); color: #0000FF; }
+  100% { transform: translateX(0); }
+}

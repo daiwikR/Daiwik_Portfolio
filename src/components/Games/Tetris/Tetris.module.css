@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  height: 100%;
+  background: #111;
+  overflow: hidden;
+  position: relative;
+}
+
+.gameArea {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.sidebar {
+  flex: 1;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.panel {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  padding: 6px;
+}
+
+.label {
+  font-family: var(--font-ui);
+  font-size: 7px;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+.value {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  color: #00FFFF;
+}
+
+.help {
+  font-family: var(--font-terminal);
+  font-size: 13px;
+  color: #666;
+  line-height: 1.6;
+  margin-top: auto;
+}

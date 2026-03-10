@@ -1,0 +1,73 @@
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.dialog {
+  background: var(--win-grey);
+  border-top: 2px solid var(--bevel-light);
+  border-left: 2px solid var(--bevel-light);
+  border-right: 2px solid var(--bevel-shadow);
+  border-bottom: 2px solid var(--bevel-shadow);
+  min-width: 200px;
+  box-shadow: 3px 3px 0 var(--win-black);
+}
+
+.titleBar {
+  background: var(--win-blue);
+  color: var(--win-white);
+  font-family: var(--font-ui);
+  font-size: 8px;
+  padding: 4px 8px;
+}
+
+.body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon {
+  font-size: 32px;
+}
+
+.msg {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  text-align: center;
+}
+
+.scores {
+  font-family: var(--font-ui);
+  font-size: 8px;
+  text-align: center;
+  color: var(--win-black);
+  line-height: 1.8;
+}
+
+.okBtn {
+  background: var(--win-grey);
+  border-top: 2px solid var(--bevel-light);
+  border-left: 2px solid var(--bevel-light);
+  border-right: 2px solid var(--bevel-shadow);
+  border-bottom: 2px solid var(--bevel-shadow);
+  font-family: var(--font-ui);
+  font-size: 8px;
+  padding: 6px 16px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.okBtn:active {
+  border-top: 2px solid var(--bevel-shadow);
+  border-left: 2px solid var(--bevel-shadow);
+  border-right: 2px solid var(--bevel-light);
+  border-bottom: 2px solid var(--bevel-light);
+}

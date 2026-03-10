@@ -1,0 +1,103 @@
+.container {
+  display: flex; flex-direction: column; align-items: center;
+  height: 100%; background: var(--win-grey); padding: 8px; gap: 8px;
+}
+
+.hud {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 200px;
+  background: var(--win-grey);
+  border-top: 2px solid var(--bevel-shadow);
+  border-left: 2px solid var(--bevel-shadow);
+  border-right: 2px solid var(--bevel-light);
+  border-bottom: 2px solid var(--bevel-light);
+  padding: 4px 8px;
+}
+
+.counter {
+  font-family: 'Courier New', monospace;
+  font-size: 20px;
+  color: #FF0000;
+  background: #000;
+  padding: 2px 4px;
+  min-width: 40px;
+  text-align: center;
+}
+
+.resetBtn {
+  font-size: 18px;
+  background: var(--win-grey);
+  border-top: 2px solid var(--bevel-light);
+  border-left: 2px solid var(--bevel-light);
+  border-right: 2px solid var(--bevel-shadow);
+  border-bottom: 2px solid var(--bevel-shadow);
+  width: 28px; height: 28px;
+  cursor: pointer; padding: 0;
+}
+
+.resetBtn:active {
+  border-top: 2px solid var(--bevel-shadow);
+  border-left: 2px solid var(--bevel-shadow);
+  border-right: 2px solid var(--bevel-light);
+  border-bottom: 2px solid var(--bevel-light);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(9, 24px);
+  gap: 0;
+  border-top: 2px solid var(--bevel-shadow);
+  border-left: 2px solid var(--bevel-shadow);
+  border-right: 2px solid var(--bevel-light);
+  border-bottom: 2px solid var(--bevel-light);
+}
+
+.cell {
+  width: 24px; height: 24px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-ui); font-size: 9px; font-weight: bold;
+  cursor: default;
+  border-top: 2px solid var(--bevel-light);
+  border-left: 2px solid var(--bevel-light);
+  border-right: 2px solid var(--bevel-shadow);
+  border-bottom: 2px solid var(--bevel-shadow);
+  background: var(--win-grey);
+  user-select: none;
+}
+
+.cell:hover {
+  background: #d4d4d4;
+}
+
+.revealed {
+  border: 1px solid var(--bevel-shadow);
+  background: var(--win-grey);
+}
+
+.mine {
+  background: #FF0000;
+  border: 1px solid var(--bevel-shadow);
+}
+
+.flagged {
+  /* Keep 3D look */
+}
+
+.result {
+  font-family: var(--font-ui); font-size: 9px;
+  display: flex; gap: 8px; align-items: center;
+}
+
+.playAgain {
+  font-family: var(--font-ui); font-size: 7px;
+  background: var(--win-grey);
+  border-top: 2px solid var(--bevel-light);
+  border-left: 2px solid var(--bevel-light);
+  border-right: 2px solid var(--bevel-shadow);
+  border-bottom: 2px solid var(--bevel-shadow);
+  padding: 3px 8px; cursor: pointer;
+}
+
+.help {
+  font-family: var(--font-ui); font-size: 6px; color: #666;
+}

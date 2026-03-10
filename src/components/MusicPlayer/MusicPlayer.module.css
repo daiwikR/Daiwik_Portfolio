@@ -1,0 +1,156 @@
+.player {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #000010;
+  color: var(--matrix-green);
+  font-family: var(--font-terminal);
+}
+
+.marqueeWrapper {
+  overflow: hidden;
+  border-bottom: 1px solid rgba(0, 255, 65, 0.3);
+  padding: 4px 0;
+  height: 28px;
+}
+
+.marquee {
+  white-space: nowrap;
+  font-size: 16px;
+  color: var(--matrix-green);
+  text-shadow: 0 0 6px #00FF41;
+  will-change: transform;
+}
+
+.visualizer {
+  flex: 1;
+  width: 100%;
+  min-height: 80px;
+  background: transparent;
+}
+
+.controls {
+  padding: 6px 8px;
+  border-top: 1px solid rgba(0, 255, 65, 0.3);
+}
+
+.btnRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.btn {
+  background: var(--win-grey);
+  border-top: 2px solid var(--bevel-light);
+  border-left: 2px solid var(--bevel-light);
+  border-right: 2px solid var(--bevel-shadow);
+  border-bottom: 2px solid var(--bevel-shadow);
+  font-family: var(--font-ui);
+  font-size: 7px;
+  padding: 3px 8px;
+  cursor: pointer;
+  color: var(--win-black);
+  min-width: 32px;
+  height: 22px;
+}
+
+.btn:active {
+  border-top: 2px solid var(--bevel-shadow);
+  border-left: 2px solid var(--bevel-shadow);
+  border-right: 2px solid var(--bevel-light);
+  border-bottom: 2px solid var(--bevel-light);
+}
+
+.playBtn {
+  min-width: 48px;
+}
+
+.muted {
+  color: var(--bevel-shadow);
+}
+
+.volumeTrack {
+  flex: 1;
+  height: 12px;
+  background: #333;
+  border-top: 2px solid var(--bevel-shadow);
+  border-left: 2px solid var(--bevel-shadow);
+  cursor: pointer;
+  position: relative;
+}
+
+.volumeFill {
+  height: 100%;
+  background: var(--matrix-green);
+  box-shadow: 0 0 4px #00FF41;
+  transition: width 0.05s;
+}
+
+.progressRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.progressTrack {
+  flex: 1;
+  height: 12px;
+  background: #222;
+  border-top: 2px solid var(--bevel-shadow);
+  border-left: 2px solid var(--bevel-shadow);
+  cursor: pointer;
+  position: relative;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--matrix-green);
+  box-shadow: 0 0 4px #00FF41;
+  transition: width 0.1s linear;
+}
+
+.time {
+  font-family: var(--font-terminal);
+  font-size: 14px;
+  color: var(--matrix-green);
+  white-space: nowrap;
+  text-shadow: 0 0 4px #00FF41;
+}
+
+.playlist {
+  border-top: 1px solid rgba(0, 255, 65, 0.3);
+  padding: 6px 8px;
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+.playlistTitle {
+  font-size: 14px;
+  color: var(--matrix-green);
+  text-shadow: 0 0 4px #00FF41;
+  margin-bottom: 4px;
+  font-family: var(--font-terminal);
+}
+
+.track {
+  font-family: var(--font-terminal);
+  font-size: 14px;
+  color: rgba(0, 255, 65, 0.7);
+  padding: 1px 4px;
+  cursor: default;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track:hover {
+  background: rgba(0, 255, 65, 0.1);
+  color: var(--matrix-green);
+}
+
+.activeTrack {
+  color: var(--matrix-green);
+  text-shadow: 0 0 6px #00FF41;
+}

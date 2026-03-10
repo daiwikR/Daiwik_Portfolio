@@ -1,0 +1,80 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --win-blue: #000080;
+  --win-teal: #008080;
+  --win-grey: #C0C0C0;
+  --win-dark: #808080;
+  --win-white: #FFFFFF;
+  --win-black: #000000;
+  --matrix-green: #00FF41;
+  --bevel-light: #FFFFFF;
+  --bevel-dark: #808080;
+  --bevel-shadow: #404040;
+  --font-ui: 'Press Start 2P', monospace;
+  --font-terminal: 'VT323', monospace;
+}
+
+body {
+  font-family: var(--font-ui);
+  background: var(--win-teal);
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  user-select: none;
+}
+
+.raised {
+  border-top: 2px solid var(--bevel-light);
+  border-left: 2px solid var(--bevel-light);
+  border-right: 2px solid var(--bevel-shadow);
+  border-bottom: 2px solid var(--bevel-shadow);
+}
+
+.inset {
+  border-top: 2px solid var(--bevel-shadow);
+  border-left: 2px solid var(--bevel-shadow);
+  border-right: 2px solid var(--bevel-light);
+  border-bottom: 2px solid var(--bevel-light);
+}
+
+button {
+  font-family: var(--font-ui);
+  cursor: pointer;
+}
+
+canvas {
+  display: block;
+}
+
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--win-grey);
+  border-top: 1px solid var(--bevel-shadow);
+  border-left: 1px solid var(--bevel-shadow);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--win-grey);
+  border-top: 2px solid var(--bevel-light);
+  border-left: 2px solid var(--bevel-light);
+  border-right: 2px solid var(--bevel-shadow);
+  border-bottom: 2px solid var(--bevel-shadow);
+}
+
+::-webkit-scrollbar-button {
+  background: var(--win-grey);
+  border-top: 2px solid var(--bevel-light);
+  border-left: 2px solid var(--bevel-light);
+  border-right: 2px solid var(--bevel-shadow);
+  border-bottom: 2px solid var(--bevel-shadow);
+  height: 16px;
+  width: 16px;
+}
