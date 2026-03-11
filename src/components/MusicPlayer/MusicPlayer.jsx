@@ -67,7 +67,10 @@ export default function MusicPlayer() {
   }, [trackIdx])
 
   useEffect(() => {
-    if (audioRef.current) audioRef.current.volume = muted ? 0 : volume
+    if (audioRef.current) {
+      audioRef.current.muted = muted
+      audioRef.current.volume = volume
+    }
   }, [volume, muted])
 
   const togglePlay = useCallback(async () => {
@@ -153,13 +156,13 @@ export default function MusicPlayer() {
 
       <div className={styles.controls}>
         <div className={styles.btnRow}>
-          <button className={styles.btn} onClick={prevTrack} aria-label="Previous">|◄</button>
+          <button className={styles.btn} onClick={prevTrack} aria-label="Previous">&lt;&lt;</button>
           <button className={`${styles.btn} ${styles.playBtn}`} onClick={togglePlay} aria-label={playing ? 'Pause' : 'Play'}>
-            {playing ? '►||' : '►'}
+            {playing ? '||' : '|>'}
           </button>
-          <button className={styles.btn} onClick={nextTrack} aria-label="Next">►|</button>
+          <button className={styles.btn} onClick={nextTrack} aria-label="Next">&gt;&gt;</button>
           <button className={`${styles.btn} ${muted ? styles.muted : ''}`} onClick={() => setMuted(m => !m)} aria-label="Mute">
-            {muted ? '🔇' : '🔊'}
+            {muted ? '[X]' : '[S]'}
           </button>
           <div className={styles.volumeTrack} onClick={handleVolumeChange} role="slider" aria-label="Volume" aria-valuenow={Math.round(volume * 100)}>
             <div className={styles.volumeFill} style={{ width: `${muted ? 0 : volume * 100}%` }} />
