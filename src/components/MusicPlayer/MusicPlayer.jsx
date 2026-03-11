@@ -138,7 +138,7 @@ export default function MusicPlayer() {
 
   return (
     <div className={styles.player}>
-      <audio ref={audioRef} src={currentTrack?.src} preload="metadata" />
+      <audio ref={audioRef} src={currentTrack?.src} preload="metadata" crossOrigin="anonymous" />
 
       <div className={styles.marqueeWrapper}>
         <div
