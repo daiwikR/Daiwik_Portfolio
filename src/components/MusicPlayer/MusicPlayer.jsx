@@ -42,6 +42,13 @@ export default function MusicPlayer() {
     return () => ro.disconnect()
   }, [])
 
+  // Reload audio when track changes
+  useEffect(() => {
+    const audio = audioRef.current
+    if (!audio) return
+    audio.load()
+  }, [trackIdx])
+
   // Audio event listeners
   useEffect(() => {
     const audio = audioRef.current
