@@ -107,9 +107,9 @@ export default function Terminal({ onOpenWindow }) {
     matrixCols.current = Array(cols).fill(0)
 
     const draw = () => {
-      ctx.fillStyle = 'rgba(0,0,0,0.05)'
+      ctx.fillStyle = 'rgba(0,0,0,0.04)'
       ctx.fillRect(0, 0, W, H)
-      ctx.fillStyle = 'rgba(0,255,65,0.15)'
+      ctx.fillStyle = '#00FF41'
       ctx.font = '14px monospace'
       matrixCols.current.forEach((y, i) => {
         const ch = randomChar()
