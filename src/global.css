@@ -16,7 +16,7 @@
   --bevel-dark: #808080;
   --bevel-shadow: #404040;
   --font-ui: 'Press Start 2P', monospace;
-  --font-terminal: 'VT323', monospace;
+  --font-terminal: 'DejaVu Sans Mono', 'Menlo', 'Courier New', monospace;
 }
 
 body {

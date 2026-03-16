@@ -186,6 +186,103 @@ function FlyingToasters({ onEnd }) {
   )
 }
 
+const AD_VIDEOS = ['pop_up.mp4', 'pop_up2.mp4', 'pop_up3.mp4', 'pop_up4.mp4']
+
+// Old-style IE popup ad with video
+function AdPopup({ onClose, pos }) {
+  const src = useRef(`${import.meta.env.BASE_URL}${AD_VIDEOS[Math.floor(Math.random() * AD_VIDEOS.length)]}`)
+  return (
+    <div className={styles.adPopup} style={{ left: pos.x, top: pos.y }}>
+      <div className={styles.adTitleBar}>
+        <div className={styles.adTitleIcon}>e</div>
+        <span className={styles.adTitleText}>http://ads1.revenue.net - ExclusiveRewards - Microsoft Internet Explorer</span>
+        <button className={styles.adCloseBtn} onClick={onClose}>✕</button>
+      </div>
+      <div className={styles.adMenuBar}>
+        <span>File</span><span>Edit</span><span>View</span><span>Favorites</span><span>Tools</span><span>Help</span>
+      </div>
+      <div className={styles.adContent}>
+        <video
+          className={styles.adVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+          src={src.current}
+        />
+        <div className={styles.adFooter}>
+          <span className={styles.adStatus}>⊕ Done</span>
+          <span className={styles.adZone}>⊕ Internet</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// Hire me popup dialog
+function HirePopup({ onClose, pos }) {
+  const [noPos, setNoPos] = useState(null)
+  const [hired, setHired] = useState(false)
+
+  const handleNoHover = () => {
+    const maxX = window.innerWidth - 120
+    const maxY = window.innerHeight - 60
+    setNoPos({
+      x: 60 + Math.random() * (maxX - 60),
+      y: 60 + Math.random() * (maxY - 60),
+    })
+  }
+
+  const handleYes = () => {
+    localStorage.setItem('hired', '1')
+    setHired(true)
+  }
+
+  return (
+    <div className={styles.adPopup} style={{ left: pos.x, top: pos.y, width: 360 }}>
+      <div className={styles.adTitleBar}>
+        <div className={styles.adTitleIcon}>?</div>
+        <span className={styles.adTitleText}>IMPORTANT MESSAGE — Portfolio OS</span>
+        <button className={styles.adCloseBtn} onClick={onClose}>✕</button>
+      </div>
+      <div className={styles.hireContent}>
+        <div className={styles.hireIcon}>?</div>
+        <div className={styles.hireText}>
+          {hired ? (
+            <>
+              <div className={styles.hireYay}>🎉 EXCELLENT CHOICE! 🎉</div>
+              <div className={styles.hireLinks}>
+                <div>📧 {CONFIG.email}</div>
+                <div>🐙 <a href={CONFIG.github} target="_blank" rel="noopener noreferrer">{CONFIG.github}</a></div>
+                <div>💼 <a href={CONFIG.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
+              </div>
+              <button className={styles.hireOkBtn} onClick={onClose}>OK, let's talk!</button>
+            </>
+          ) : (
+            <>
+              <div className={styles.hireQuestion}>How likely are you going to hire me?</div>
+              <div className={styles.hireSubtext}>This offer expires when the intern season ends.</div>
+              <div className={styles.hireBtns}>
+                <button className={styles.hireYesBtn} onClick={handleYes}>YES ✓</button>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+      {!hired && (
+        <button
+          className={styles.hireNoBtn}
+          style={noPos ? { position: 'fixed', left: noPos.x, top: noPos.y } : {}}
+          onMouseEnter={handleNoHover}
+          onClick={handleNoHover}
+        >
+          No
+        </button>
+      )}
+    </div>
+  )
+}
+
 const KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a']
 
 export default function Desktop() {
@@ -193,7 +290,70 @@ export default function Desktop() {
   const [showStart, setShowStart] = useState(false)
   const [showToasters, setShowToasters] = useState(false)
   const [contextMenu, setContextMenu] = useState(null)
+  const [adState, setAdState] = useState('idle') // 'idle' | 'video' | 'hire'
+  const [adPos, setAdPos] = useState({ x: 200, y: 100 })
   const konamiIdx = useRef(0)
+  const adTimerRef = useRef(null)
+  const adShownAt = useRef(null)    // timestamp when current popup appeared
+  const adVideoCount = useRef(0)   // how many video ads shown
+
+  const MIN_DELAY = 3 * 60 * 1000        // 3 min floor
+  const INITIAL_DELAY = 7 * 60 * 1000    // 7 min first appearance
+  const QUICK_CLOSE_THRESHOLD = 60 * 1000 // 1 min = "closed on time"
+
+  const randomAdPos = () => ({
+    x: 80 + Math.random() * Math.max(100, window.innerWidth - 500),
+    y: 60 + Math.random() * Math.max(100, window.innerHeight - 350),
+  })
+
+  const showPopup = (type) => {
+    adShownAt.current = Date.now()
+    setAdPos(randomAdPos())
+    setAdState(type)
+  }
+
+  // Initial ad timer — 7 minutes
+  useEffect(() => {
+    const t = setTimeout(() => showPopup('video'), INITIAL_DELAY)
+    return () => clearTimeout(t)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const handleAdClose = useCallback(() => {
+    setAdState('idle')
+    clearTimeout(adTimerRef.current)
+    adVideoCount.current++
+
+    const openDuration = Date.now() - (adShownAt.current ?? Date.now())
+    const closedQuickly = openDuration < QUICK_CLOSE_THRESHOLD
+
+    // Closed quickly → increase delay (they're trying to dodge it)
+    // Left it open → shorter delay (they're engaged) but min 3 min
+    const nextDelay = closedQuickly
+      ? Math.max(MIN_DELAY, 7 * 60 * 1000 + adVideoCount.current * 2 * 60 * 1000)
+      : MIN_DELAY
+
+    // Alternate: every 2nd video ad becomes the hire popup
+    const nextType = adVideoCount.current >= 2 && !localStorage.getItem('hired') ? 'hire' : 'video'
+
+    adTimerRef.current = setTimeout(() => showPopup(nextType), nextDelay)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const handleHireClose = useCallback(() => {
+    setAdState('idle')
+    clearTimeout(adTimerRef.current)
+    if (localStorage.getItem('hired')) return // never again if they said yes
+
+    const openDuration = Date.now() - (adShownAt.current ?? Date.now())
+    const closedQuickly = openDuration < QUICK_CLOSE_THRESHOLD
+    const nextDelay = closedQuickly
+      ? Math.max(MIN_DELAY, 10 * 60 * 1000)
+      : MIN_DELAY
+
+    adTimerRef.current = setTimeout(() => showPopup('hire'), nextDelay)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const openApp = useCallback((id) => {
     const def = WINDOW_DEFS[id]
@@ -321,6 +481,10 @@ export default function Desktop() {
           </div>
         </div>
       )}
+
+      {/* Ad popup */}
+      {adState === 'video' && <AdPopup pos={adPos} onClose={handleAdClose} />}
+      {adState === 'hire' && <HirePopup pos={adPos} onClose={handleHireClose} />}
 
       {/* Flying toasters */}
       {showToasters && <FlyingToasters onEnd={() => setShowToasters(false)} />}

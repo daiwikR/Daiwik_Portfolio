@@ -128,3 +128,262 @@
   0%, 100% { opacity: 0.4; }
   50% { opacity: 1; }
 }
+
+/* ── Ad popup (IE-style) ─────────────────────────────────── */
+.adPopup {
+  position: fixed;
+  z-index: 99990;
+  background: var(--win-grey);
+  border-top: 2px solid var(--bevel-light);
+  border-left: 2px solid var(--bevel-light);
+  border-right: 2px solid var(--bevel-shadow);
+  border-bottom: 2px solid var(--bevel-shadow);
+  box-shadow: 3px 3px 0 var(--win-black);
+  width: 380px;
+  min-height: 80px;
+}
+
+.adTitleBar {
+  background: linear-gradient(to right, #0a246a, #3a6ea5);
+  color: #fff;
+  padding: 3px 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 22px;
+  cursor: default;
+  user-select: none;
+}
+
+.adTitleIcon {
+  font-family: var(--font-ui);
+  font-size: 9px;
+  font-style: italic;
+  font-weight: bold;
+  color: #4fc3f7;
+  background: #fff;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.adTitleText {
+  font-family: var(--font-ui);
+  font-size: 8px;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.adCloseBtn {
+  width: 16px;
+  height: 14px;
+  background: var(--win-grey);
+  border-top: 2px solid var(--bevel-light);
+  border-left: 2px solid var(--bevel-light);
+  border-right: 2px solid var(--bevel-shadow);
+  border-bottom: 2px solid var(--bevel-shadow);
+  color: var(--win-black);
+  font-size: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-family: var(--font-ui);
+  line-height: 1;
+}
+
+.adCloseBtn:active {
+  border-top: 2px solid var(--bevel-shadow);
+  border-left: 2px solid var(--bevel-shadow);
+  border-right: 2px solid var(--bevel-light);
+  border-bottom: 2px solid var(--bevel-light);
+}
+
+.adMenuBar {
+  display: flex;
+  gap: 2px;
+  padding: 2px 6px;
+  background: var(--win-grey);
+  border-bottom: 1px solid var(--bevel-shadow);
+}
+
+.adMenuBar span {
+  font-family: var(--font-ui);
+  font-size: 7px;
+  padding: 1px 4px;
+  cursor: pointer;
+}
+
+.adMenuBar span:hover {
+  background: var(--win-blue);
+  color: #fff;
+}
+
+.adContent {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.adVideo {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.adFooter {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 6px;
+  border-top: 1px solid var(--bevel-shadow);
+  background: var(--win-grey);
+}
+
+.adFooter span {
+  font-family: var(--font-ui);
+  font-size: 7px;
+  color: #444;
+}
+
+/* ── Hire popup ──────────────────────────────────────────── */
+.hireContent {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 14px 12px;
+}
+
+.hireIcon {
+  font-family: var(--font-ui);
+  font-size: 28px;
+  color: var(--win-blue);
+  font-weight: bold;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--win-blue);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.hireText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hireQuestion {
+  font-family: var(--font-ui);
+  font-size: 9px;
+  color: var(--win-black);
+  font-weight: bold;
+}
+
+.hireSubtext {
+  font-family: var(--font-ui);
+  font-size: 7px;
+  color: #666;
+}
+
+.hireBtns {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  padding-bottom: 4px;
+}
+
+.hireYesBtn {
+  font-family: var(--font-ui);
+  font-size: 8px;
+  padding: 4px 16px;
+  background: var(--win-grey);
+  border-top: 2px solid var(--bevel-light);
+  border-left: 2px solid var(--bevel-light);
+  border-right: 2px solid var(--bevel-shadow);
+  border-bottom: 2px solid var(--bevel-shadow);
+  cursor: pointer;
+  min-width: 64px;
+}
+
+.hireYesBtn:active {
+  border-top: 2px solid var(--bevel-shadow);
+  border-left: 2px solid var(--bevel-shadow);
+  border-right: 2px solid var(--bevel-light);
+  border-bottom: 2px solid var(--bevel-light);
+}
+
+.hireNoBtn {
+  font-family: var(--font-ui);
+  font-size: 8px;
+  padding: 4px 16px;
+  background: var(--win-grey);
+  border-top: 2px solid var(--bevel-light);
+  border-left: 2px solid var(--bevel-light);
+  border-right: 2px solid var(--bevel-shadow);
+  border-bottom: 2px solid var(--bevel-shadow);
+  cursor: pointer;
+  min-width: 64px;
+  margin: 0 14px 12px auto;
+  display: block;
+  z-index: 99995;
+  transition: none;
+}
+
+.hireNoBtn:active {
+  border-top: 2px solid var(--bevel-shadow);
+  border-left: 2px solid var(--bevel-shadow);
+  border-right: 2px solid var(--bevel-light);
+  border-bottom: 2px solid var(--bevel-light);
+}
+
+.hireYay {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  color: var(--win-blue);
+  font-weight: bold;
+  animation: pulse 0.6s ease-in-out infinite alternate;
+}
+
+.hireLinks {
+  font-family: var(--font-ui);
+  font-size: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--win-black);
+}
+
+.hireLinks a {
+  color: var(--win-blue);
+  text-decoration: underline;
+}
+
+.hireOkBtn {
+  font-family: var(--font-ui);
+  font-size: 8px;
+  padding: 4px 16px;
+  background: var(--win-grey);
+  border-top: 2px solid var(--bevel-light);
+  border-left: 2px solid var(--bevel-light);
+  border-right: 2px solid var(--bevel-shadow);
+  border-bottom: 2px solid var(--bevel-shadow);
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}

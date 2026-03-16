@@ -7,10 +7,6 @@ const BOOT_LINES = [
   'ESTABLISHING SECURE TUNNEL...',
   'DECRYPTING CREDENTIALS...',
   'ACCESS GRANTED.',
-  '',
-  'PORTFOLIO OS v2.0',
-  'Type HELP for available commands.',
-  '',
 ]
 
 const MATRIX_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*'
@@ -91,6 +87,7 @@ export default function Terminal({ onOpenWindow }) {
   const [booted, setBooted] = useState(false)
   const [busy, setBusy] = useState(false)
   const [fireworks, setFireworks] = useState(false)
+  const [videoFailed, setVideoFailed] = useState(false)
   const outputRef = useRef(null)
   const inputRef = useRef(null)
   const canvasRef = useRef(null)
@@ -134,7 +131,14 @@ export default function Terminal({ onOpenWindow }) {
 
     const typeNext = () => {
       if (lineIdx >= BOOT_LINES.length) {
-        setBooted(true)
+        // Clear after short pause, then show minimal hint
+        setTimeout(() => {
+          setOutput([])
+          setTimeout(() => {
+            setOutput(['type HELP'])
+            setBooted(true)
+          }, 350)
+        }, 700)
         return
       }
       const line = BOOT_LINES[lineIdx]
@@ -353,7 +357,18 @@ export default function Terminal({ onOpenWindow }) {
 
   return (
     <div className={styles.terminal} onClick={() => inputRef.current?.focus()}>
-      <canvas ref={canvasRef} className={styles.matrixBg} />
+      {!videoFailed && (
+        <video
+          className={styles.videoBg}
+          autoPlay
+          loop
+          muted
+          playsInline
+          onError={() => setVideoFailed(true)}
+          src={`${import.meta.env.BASE_URL}terminal-background.mp4`}
+        />
+      )}
+      <canvas ref={canvasRef} className={videoFailed ? styles.matrixBg : styles.matrixOverlay} />
       <div className={styles.scanlines} />
       {fireworks && <div className={styles.fireworks}>🎆</div>}
       <div ref={outputRef} className={styles.output}>
